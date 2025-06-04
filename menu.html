@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- same head as before -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>☕ Coffee - Menu</title>
+  <link href="./output.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Miniver&family=Poppins:ital,wght@0,100;0,400;0,500;0,600;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+</head>
+<body class="bg-[#2e0d0d]">
+
+  <!-- Navbar -->
+  <nav class="bg-orange-950 px-8 py-4 relative z-50">
+    <div class="flex justify-between items-center">
+      <a href="index.html" class="text-white text-2xl font-bold">☕Coffee</a>
+      <div class="hidden md:flex space-x-4">
+        <a href="index.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="home">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="about-section">About</a>
+        <a href="menu.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="menu-section">Menu</a>
+        <a href="review.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="review-section">Review</a>
+        <a href="gallery.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="gallery-section">Gallery</a>
+        <a href="contact.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="contact-section">Contact</a>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-white text-lg">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div
+      id="mobile-menu"
+      class="hidden absolute top-full right-4 bg-orange-900 w-44 rounded-md mt-2 py-4 px-4 z-40 shadow-lg"
+    >
+      <div class="flex flex-col text-white space-y-3">
+        <a href="index.html" class="nav-link hover:text-orange-400" data-target="home">Home</a>
+        <a href="about.html" class="nav-link hover:text-orange-400" data-target="about-section">About</a>
+        <a href="menu.html" class="nav-link hover:text-orange-400" data-target="menu-section">Menu</a>
+        <a href="review.html" class="nav-link hover:text-orange-400" data-target="review-section">Review</a>
+        <a href="gallery.html" class="nav-link hover:text-orange-400" data-target="gallery-section">Gallery</a>
+        <a href="contact.html" class="nav-link hover:text-orange-400" data-target="contact-section">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu Section -->
+  <div id="menu-section" class="section  text-white text-center px-6 md:px-12 lg:px-32 py-10">
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="font-miniver text-4xl sm:text-5xl lg:text-6xl text-orange-400 text-center flex-grow">Our Menu</h2>
+    
+    <!-- Cart button -->
+    <button id="cart-btn" class="relative ml-4 text-orange-400 hover:text-orange-300 focus:outline-none">
+      <!-- Cart SVG icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.2 6m0 0a1 1 0 102 0m-2 0h12a1 1 0 100-2H7z" />
+      </svg>
+      <!-- Cart item count badge -->
+      <span id="cart-count" class="absolute -top-1 -right-1 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+    <!-- Menu Item 1 -->
+    <div class="bg-orange-950 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition duration-300 flex flex-col items-center">
+      <img src="images/th (3).jpeg" alt="Espresso" class="w-32 h-32 object-cover rounded-full mb-4" />
+      <h3 class="text-xl font-semibold text-white mb-2">Espresso</h3>
+      <p class="text-pink-100 mb-2 text-center">Rich and bold single shot of espresso.</p>
+      <span class="text-orange-400 font-bold mb-4">₹100</span>
+      <button class="add-to-cart bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded mb-4" data-item="Espresso" data-price="100">
+        Add to Cart
+      </button>
+
+      <button class="buy-now bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded " data-item="Espresso" data-price="100">
+      Buy Now
+      </button>
+    </div>
+
+    <!-- Menu Item 2 -->
+    <div class="bg-orange-950 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition duration-300 flex flex-col items-center">
+      <img src="images/Cup-of-Cappuccino-1024x1024.jpg" alt="Cappuccino" class="w-32 h-32 object-cover rounded-full mb-4" />
+      <h3 class="text-xl font-semibold text-white mb-2">Cappuccino</h3>
+      <p class="text-pink-100 mb-2 text-center">Perfect balance of espresso, milk, and foam.</p>
+      <span class="text-orange-400 font-bold mb-4">₹130</span>
+      <button class="add-to-cart bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded mb-4" data-item="Cappuccino"data-price="130">
+        Add to Cart
+      </button>
+      <button class="buy-now bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"data-item="Cappuccino"   data-price="100">
+      Buy Now
+      </button>
+    </div>
+
+    <!-- Menu Item 3 -->
+    <div class="bg-orange-950 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition duration-300 flex flex-col items-center">
+      <img src="images/homemade-iced-latte.jpg" alt="Iced Latte" class="w-32 h-32 object-cover rounded-full mb-4" />
+      <h3 class="text-xl font-semibold text-white mb-2">Iced Latte</h3>
+      <p class="text-pink-100 mb-2 text-center">Chilled espresso with cold milk over ice.</p>
+      <span class="text-orange-400 font-bold mb-4">₹150</span>
+      <button class="add-to-cart bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded mb-4" data-item="Iced Latte" data-price="150">
+        Add to Cart
+      </button>
+
+      <button class="buy-now bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"data-item="Iced Latte"   data-price="100">
+      Buy Now
+      </button>
+    </div>
+
+    <!-- Menu Item 4 -->
+    <div class="bg-orange-950 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition duration-300 flex flex-col items-center">
+      <img src="images/mocha.jpeg" alt="Mocha" class="w-32 h-32 object-cover rounded-full mb-4" />
+      <h3 class="text-xl font-semibold text-white mb-2">Mocha</h3>
+      <p class="text-pink-100 mb-2 text-center">A mix of chocolate, espresso, and steamed milk.</p>
+      <span class="text-orange-400 font-bold mb-4">₹160</span>
+      <button class="add-to-cart bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded mb-4" data-item="Mocha" data-price="160">
+        Add to Cart
+      </button>
+      <button class="buy-now bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"data-item="Mocha"   data-price="100">
+      Buy Now
+      </button>
+    </div>
+
+    <!-- Menu Item 5 -->
+    <div class="bg-orange-950 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition duration-300 flex flex-col items-center">
+      <img src="images/homemade-vanilla-sweet-cream-cold-brew.jpg" alt="Vanilla Cold Brew" class="w-32 h-32 object-cover rounded-full mb-4" />
+      <h3 class="text-xl font-semibold text-white mb-2">Vanilla Cold Brew</h3>
+      <p class="text-pink-100 mb-2 text-center">Cold brew sweetened with vanilla syrup.</p>
+      <span class="text-orange-400 font-bold mb-4">₹180</span>
+      <button class="add-to-cart bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded mb-4" data-item="Vanilla Cold Brew" data-price="180">
+        Add to Cart
+      </button>
+      <button class="buy-now bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"data-item="Vanilla Cold Brew"   data-price="100">
+      Buy Now
+      </button>
+    </div>
+
+    <!-- Menu Item 6 -->
+    <div class="bg-orange-950 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition duration-300 flex flex-col items-center">
+      <img src="images/hot chocolate.jpg" alt="Hot Chocolate" class="w-32 h-32 object-cover rounded-full mb-4" />
+      <h3 class="text-xl font-semibold text-white mb-2">Hot Chocolate</h3>
+      <p class="text-pink-100 mb-2 text-center">Rich cocoa blend with steamed milk and cream.</p>
+      <span class="text-orange-400 font-bold mb-4">₹120</span>
+      <button class="add-to-cart bg-orange-400 hover:bg-orange-500 text-white font-semibold px-4 py-2 rounded mb-4" data-item="Hot Chocolate" data-price="120">
+        Add to Cart
+      </button>
+
+       <button class="buy-now bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded"data-item="Hot Chocolate"   data-price="100">
+      Buy Now
+      </button>
+    </div>
+  </div>
+</div>
+<div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white text-black rounded-2xl w-11/12 max-w-md p-6 relative">
+    <h3 class="text-2xl font-bold mb-4 text-center">Your Cart</h3>
+    <ul id="cart-items" class="mb-4 space-y-2">
+      <!-- Cart items will be injected here -->
+    </ul>
+    <div class="flex justify-between font-bold text-lg mb-4">
+      <span>Total:</span>
+      <span id="cart-total">₹0</span>
+    </div>
+    <div class="flex justify-between">
+      <button id="close-cart" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Close</button>
+      <button id="checkout-btn" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">Checkout</button>
+
+    </div>
+  </div>
+</div>
+<script>
+    document.getElementById("order-now-btn").addEventListener("click", function () {
+  window.location.href = "menu.html";
+});
+
+</script>
+
+//buynow btn
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+          const name = button.dataset.item;
+          const price = button.dataset.price;
+          addToCart(name, price);
+        });
+      });
+
+      document.querySelectorAll('.buy-now').forEach(button => {
+        button.addEventListener('click', () => {
+          const name = button.dataset.item;
+          const price = button.dataset.price;
+          alert(`You bought ${name} for ₹${price}`);
+        });
+      });
+
+      document.getElementById('cart-btn').addEventListener('click', () => {
+        renderCart('cart-items', 'cart-total');
+        document.getElementById('cart-modal').classList.remove('hidden');
+      });
+
+      document.getElementById('close-cart').addEventListener('click', () => {
+        document.getElementById('cart-modal').classList.add('hidden');
+      });
+
+      updateCartCount();
+    });
+
+
+
+</script>
+<script src="cart.js"></script>
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.item;
+        const price = button.dataset.price;
+        addToCart(name, price);
+      });
+    });
+
+    document.querySelectorAll('.buy-now').forEach(button => {
+      button.addEventListener('click', () => {
+        const name = button.dataset.item;
+        const price = button.dataset.price;
+        alert(`You bought ${name} for ₹${price}`);
+      });
+    });
+
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      renderCart('cart-items', 'cart-total');
+      document.getElementById('cart-modal').classList.remove('hidden');
+    });
+
+    document.getElementById('close-cart').addEventListener('click', () => {
+      document.getElementById('cart-modal').classList.add('hidden');
+    });
+
+    // ✅ Add this line for checkout redirect
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      window.location.href = 'thankyou.html';
+    });
+
+    updateCartCount();
+  });
+</script>
+
+</body>
+</html>
+
+
+
+

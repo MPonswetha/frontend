@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- same head as above, omitted here for brevity -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>☕ Coffee - About</title>
+  <link href="./output.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Miniver&family=Poppins:ital,wght@0,100;0,400;0,500;0,600;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+</head>
+<body class="bg-[#2e0d0d]">
+
+  <!-- Navbar same as home.html, just change the href links to about.html for active page -->
+
+  <nav class="bg-orange-950 px-8 py-4 relative z-50">
+    <div class="flex justify-between items-center">
+      <a href="index.html" class="text-white text-2xl font-bold">☕Coffee</a>
+      <div class="hidden md:flex space-x-4">
+        <a href="index.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="home">Home</a>
+        <a href="about.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="about-section">About</a>
+        <a href="menu.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="menu-section">Menu</a>
+        <a href="review.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="review-section">Review</a>
+        <a href="gallery.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="gallery-section">Gallery</a>
+        <a href="contact.html" class="nav-link text-white hover:text-orange-500 px-3" data-target="contact-section">Contact</a>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-toggle" class="text-white text-lg">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <div
+      id="mobile-menu"
+      class="hidden absolute top-full right-4 bg-orange-900 w-44 rounded-md mt-2 py-4 px-4 z-40 shadow-lg"
+    >
+      <div class="flex flex-col text-white space-y-3">
+        <a href="index.html" class="nav-link hover:text-orange-400" data-target="home">Home</a>
+        <a href="about.html" class="nav-link hover:text-orange-400" data-target="about-section">About</a>
+        <a href="menu.html" class="nav-link hover:text-orange-400" data-target="menu-section">Menu</a>
+        <a href="review.html" class="nav-link hover:text-orange-400" data-target="review-section">Review</a>
+        <a href="gallery.html" class="nav-link hover:text-orange-400" data-target="gallery-section">Gallery</a>
+        <a href="contact.html" class="nav-link hover:text-orange-400" data-target="contact-section">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about-section" class="section flex flex-col lg:flex-row items-center justify-between gap-10 px-6 md:px-12 lg:px-32 py-10">
+    
+    
+   <div class="w-full lg:w-1/2 flex justify-center ">
+    <img src="images/about-image.jpg" alt="Barista making coffee" class=" mt-16 w-64 sm:w-80 md:w-[26rem] lg:w-[30rem] xl:w-[34rem] rounded-2xl shadow-lg h-auto object-cover " />
+  </div>
+  <div class="w-full  lg:w-1/2 text-center lg:text-left">
+    <h2 class="font-miniver text-4xl sm:text-5xl lg:text-6xl text-orange-400 mb-6 text-center justify-center">About Us</h2>
+    <p class="text-pink-100 text-base sm:text-lg lg:text-xl mb-4">At Coffee House in Kadayanallur, we pride ourselves on being a go-to destination for coffee lovers and conversation seekers alike. We're dedicated to providing an exceptional coffee experience in a cozy and inviting atmosphere, where guests can relax, unwind, and enjoy their time in comfort.</p>
+ 
+  </div>
+   
+  </section>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+  <script>
+  // Make sure cart is defined and persisted in localStorage
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function addToCart(name, price) {
+    cart.push({ name, price: parseFloat(price) });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    cartCount.textContent = cart.length;
+  }
+
+  function renderCart(listId, totalId) {
+    const list = document.getElementById(listId);
+    const total = document.getElementById(totalId);
+    list.innerHTML = '';
+
+    let sum = 0;
+    cart.forEach((item) => {
+      const li = document.createElement('li');
+      li.className = 'flex justify-between items-center';
+      li.innerHTML = `
+        <span>${item.name}</span>
+        <span>₹${item.price}</span>
+      `;
+      list.appendChild(li);
+      sum += item.price;
+    });
+
+    total.textContent = `₹${sum}`;
+  }
+
+  // Checkout functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      const confirmed = confirm("Are you sure you want to checkout?");
+      if (confirmed) {
+        // Optional: you can send this data to a server here
+
+        // Clear cart
+        cart = [];
+        localStorage.removeItem('cart');
+
+        // Update UI
+        updateCartCount();
+        renderCart('cart-items', 'cart-total');
+        document.getElementById('cart-modal').classList.add('hidden');
+
+        // Show confirmation
+        alert("Thank you for your order!");
+
+        // Optional: Redirect to thank you page
+        // window.location.href = "thankyou.html";
+      }
+    });
+
+    // Ensure cart is rendered and count updated on load
+    updateCartCount();
+  });
+</script>
+
+</body>
+</html>
